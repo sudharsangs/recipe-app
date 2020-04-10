@@ -10,7 +10,7 @@ function App(){
 
     const [recipes, setRecipes] = useState([]);
     const [search,setSearch] = useState('');
-    const [query, setQuery] = useState('banana');
+    const [query, setQuery] = useState('orange');
 
     const getRecipies = async () => {
         const url =`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`;
@@ -34,6 +34,7 @@ function App(){
     }
 
     return(
+        
         <div className={styles.App}>
             <form onSubmit={getSearch} className={styles.searchForm}>
                 <input 
@@ -45,6 +46,9 @@ function App(){
                 />
                 <button className={styles.searchButton} type="submit">Search</button>
             </form>
+            {
+            recipes.length 
+            ? (
             <div className={styles.recipes}>
             {recipes.map(recipe => (
                 <Recipe 
@@ -55,7 +59,10 @@ function App(){
                     ingredients={recipe.recipe.ingredients}
                      />
             ))}
-            </div>
+            </div>):
+            <div>
+                <h1 className={styles.heading}>No recipes found for the ingredient</h1>
+            </div>}
         </div>
     )
 }

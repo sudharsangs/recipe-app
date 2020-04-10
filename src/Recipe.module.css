@@ -44,6 +44,11 @@ h1 {
 }
 
 p {
-    size: 2rem;
+    font-size: 1.5rem;
     font-family: 'Pacifico', cursive;
+}
+
+span {
+    text-decoration: underline;
+
 }
